@@ -1,25 +1,32 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import './Input.css';
 
-function Input({ placeholder, backgroundColor = "#F2F2F2", size = "md"}) {
+function Input(props, { placeholder, borderColor = "#828282", size = "md", isHover = false, disabled = false,}) {
   let scale = 1
-  if (size === "sm") scale = 0.75
-  if (size === "lg") scale = 1.5
+  if (size === "sm") scale = 0.75;
+  if (size === "lg") scale = 1.5;
+  if (props.disabled) disabled = true;
+  const hover = 'hover:bg-[#D32F2F]';
+  var className = `${hover}`;
   const style = {
-    backgroundColor,
+    borderColor,
     padding: `${scale * 0.5}rem ${scale * 1}rem`,
-    border: "none",
+    borderRadius: '8px',
+    borderStyle: 'solid',
   }
   return (
     <div>
-      <label for="input">Label</label>
-      <input type="text" id="input" name="input" style={style} placeholder={placeholder}></input>
+      <label >Label</label>
+      <input type="text" className={className} style={style} placeholder={placeholder} disabled={disabled}></input>
     </div>
   )
 }
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  borderColor: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
+  isHover: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 export default Input
