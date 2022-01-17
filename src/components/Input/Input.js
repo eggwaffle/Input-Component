@@ -13,6 +13,14 @@ function Input(props, {
   let text = 'text-[#333333]';
   let textHover = 'group-hover:text-[#333333]';
   let textFocus = 'peer-focus:text-[#2962FF]';
+  let icon = 'call';
+  let iconDisplay = 'hidden';
+  let left = 'left-3';
+  let top = 'top-10';
+  let py = 'py-[1rem]';
+  let width = 'w-[12.5rem]';
+  let inputDisplay = '';
+  let textareaDisplay = 'hidden';
 
   error = props.error;
   if (error) {
@@ -22,7 +30,7 @@ function Input(props, {
     text = 'text-[#D32F2F]';
     textHover = 'peer-hover:text-[#333333]';
     textFocus = 'peer-focus:text-[#D32F2F]';
-  }
+  };
 
   if (props.disabled) {
     disabled = true;
@@ -32,30 +40,37 @@ function Input(props, {
 
   helperText = props.helperText;
 
-
+  if (props.startIcon) {
+    iconDisplay = '';
+  };
+  if (props.endIcon) {
+    icon = 'lock';
+    iconDisplay = '';
+    left = 'right-3';
+  };
 
   value = props.value;
 
-  let py = 'py-[1rem]';
   size = props.size;
-  if (size === 'sm') py = 'py-[0.5rem]';
+  if (size === 'sm') {
+    py = 'py-[0.5rem]';
+    top = 'top-9';
+  };
 
-  let width = 'w-[12.5rem]'
   if (props.fullWidth) {
     width = 'w-full';
-  }
+  };
 
-  let inputDisplay = '';
-  let textareaDisplay = 'hidden';
   if (props.multiline) {
     inputDisplay = 'hidden';
     textareaDisplay = '';
-  }
+  };
 
-  const divClassName = `flex flex-col ${width}`;
+  const divClassName = `relative flex flex-col ${width}`;
   const labelClassName = `order-1 block mb-1 text-sm ${text} ${textHover} ${textFocus}`;
-  const inputClassName = `order-2 peer block border border-solid rounded-lg outline-none px-2 ${borderColor} ${hover} ${focus} ${py} ${inputDisplay}`;
-  const textareaClassName = `order-3 peer block border border-solid rounded-lg outline-none px-2 ${borderColor} ${hover} ${focus} ${py} ${textareaDisplay}`;
+  const iconClassName = `material-icons absolute text-[#333333] ${iconDisplay} ${left} ${top}`;
+  const inputClassName = `order-2 peer block border border-solid rounded-lg outline-none px-10 ${borderColor} ${hover} ${focus} ${py} ${inputDisplay}`;
+  const textareaClassName = `order-3 peer block border border-solid rounded-lg outline-none px-10 ${borderColor} ${hover} ${focus} ${py} ${textareaDisplay}`;
   const helperTextClassName = `order-4 block mb-1 text-xs ${text} ${textHover} ${textFocus}`;
   return (
 
@@ -63,16 +78,19 @@ function Input(props, {
     <input type='text' name='inputcomp' className={inputClassName} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
     <textarea className={textareaClassName} rows={props.row} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
     <label htmlFor="inputcomp" className={labelClassName}>Label</label>
+    <span className={iconClassName}>
+      {icon}
+    </span>
     <p className={helperTextClassName}>{helperText}</p>
   </div>
 
   )
-}
+};
 
 Input.propTypes = {
   size: PropTypes.oneOf(['sm', 'md']),
   value: PropTypes.string,
   disabled: PropTypes.bool,
   helperText: PropTypes.string
-}
-export default Input
+};
+export default Input;
