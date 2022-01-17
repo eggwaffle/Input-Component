@@ -48,6 +48,7 @@ function Input(props, {
     iconDisplay = '';
     left = 'right-3';
   };
+  if (props.icon) icon = props.icon;
 
   value = props.value;
 
