@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  purge: [
+  HTMLFormControlsCollection: [
     './public/index.html',
     './src/**/*.{js,jsx,ts,tsx}',
   ],
