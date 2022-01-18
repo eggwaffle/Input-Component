@@ -8,7 +8,9 @@ function Input(props, {
     disabled = false,
     helperText,
   }){
-  let hover = 'group-hover:border-[#333333]';
+  let inputName = 'inputcomp';
+  let labelFor = 'inputcomp'
+  let hover = 'hover:border-[#333333]';
   let focus = 'focus:border-[#2962FF]';
   let text = 'text-[#333333]';
   let textHover = 'group-hover:text-[#333333]';
@@ -21,6 +23,7 @@ function Input(props, {
   let width = 'w-[12.5rem]';
   let inputDisplay = '';
   let textareaDisplay = 'hidden';
+  let textareaName = '';
 
   error = props.error;
   if (error) {
@@ -63,7 +66,9 @@ function Input(props, {
   };
 
   if (props.multiline) {
+    inputName = '';
     inputDisplay = 'hidden';
+    textareaName = 'inputcomp';
     textareaDisplay = '';
   };
 
@@ -76,9 +81,9 @@ function Input(props, {
   return (
 
   <div className={divClassName}>
-    <input type='text' name='inputcomp' className={inputClassName} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
-    <textarea className={textareaClassName} rows={props.row} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
-    <label htmlFor="inputcomp" className={labelClassName}>Label</label>
+    <input type='text' name={inputName} id={inputName} className={inputClassName} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
+    <textarea name={textareaName} id={textareaName} className={textareaClassName} rows={props.row} placeholder='Placeholder' defaultValue={value} disabled={disabled} />
+    <label htmlFor={labelFor} className={labelClassName}>Label</label>
     <span className={iconClassName}>
       {icon}
     </span>
