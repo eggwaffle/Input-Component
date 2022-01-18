@@ -39,7 +39,7 @@
 
 ![screenshot](https://raw.githubusercontent.com/eggwaffle/Input-Component/main/screenshot.png)
 
-Challenge: Create a reusable button with all the states in the design and a page displaying all the states.
+Challenge: Create a reusable input with all the states in the design and a page displaying all the states.
 
 - Demo: https://front-end-dev-challenges.web.app/input/
 
